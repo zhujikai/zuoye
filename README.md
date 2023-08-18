@@ -1,33 +1,33 @@
 /// 一个可以实现点击显示的气泡
 
-class JPopupMenuButtonItem {
+class PopupMenuButtonItem {
   /// 按钮标题
   final String title;
 
   /// 点击响应
   final VoidCallback tap;
 
-  JPopupMenuButtonItem({
+  PopupMenuButtonItem({
     required this.title,
     required this.tap,
   });
 }
 
-class JPopupMenuButton extends StatelessWidget {
-  const JPopupMenuButton(
+class PopupMenuButton extends StatelessWidget {
+  const PopupMenuButton(
       {Key? key, required this.child, required this.moreButtons, this.onTap})
       : super(key: key);
 
   final Widget child;
 
   /// 更多按钮展开的按钮列表
-  final List<JPopupMenuButtonItem> moreButtons;
+  final List<PopupMenuButtonItem> moreButtons;
 
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    TextStyle ts = JTextStyle4gray59Bold(13.sp);
+    TextStyle ts = TextStyle4gray59Bold(13.sp);
 
     double maxWidth = 0;
     for (var element in moreButtons) {
@@ -35,7 +35,7 @@ class JPopupMenuButton extends StatelessWidget {
       maxWidth = max(maxWidth, width);
     }
 
-    return JPopupWidgetButton(
+    return PopupWidgetButton(
       child: child,
       popWidget: Builder(
         builder: (BuildContext context) {
@@ -52,7 +52,7 @@ class JPopupMenuButton extends StatelessWidget {
                 child: Container(
                   height: 34.w,
                   padding: EdgeInsets.only(left: 12.w, top: 10.w),
-                  child: JText(
+                  child: Text(
                     moreButtons[index].title,
                     style: ts,
                   ),
@@ -68,8 +68,8 @@ class JPopupMenuButton extends StatelessWidget {
   }
 }
 
-class JPopupWidgetButton extends StatelessWidget {
-  JPopupWidgetButton({
+class PopupWidgetButton extends StatelessWidget {
+  PopupWidgetButton({
     Key? key,
     required this.child,
     required this.popWidget,
@@ -321,7 +321,7 @@ class _PopupContentViewState extends State<_PopupContentView> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: JColors.divider1,
+                  color: Colors.divider1,
                   width: 0.5,
                 ),
                 boxShadow: [
